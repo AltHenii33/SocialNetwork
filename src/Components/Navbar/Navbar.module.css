@@ -1,9 +1,7 @@
 
 .nav {
    grid-area: n;
-   padding: 15px;
-   box-shadow: 0 0 5px rgb(198, 207, 207);
-   height: 100vh;
+   /* height: 100vh; */
 }
 
 .item a {

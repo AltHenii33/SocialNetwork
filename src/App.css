@@ -1,12 +1,12 @@
 .app-wrapper {
     display: grid;
     grid-template-areas: 
-    "h h"
-    "n c";
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
-    margin: 10px;
+    "h h r"
+    "n c r";
+    grid-template-rows: 40px 1fr;
+    grid-template-columns: 2fr 10fr 2fr;
+    /* grid-gap: 10px;
+    margin: 10px; */
     background-image: url(https://zastavok.net/main/creative-wallpaper/156676666440.jpg);
     background-size: 100%;
 }
