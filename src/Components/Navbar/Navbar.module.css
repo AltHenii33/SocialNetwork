@@ -1,0 +1,18 @@
+
+.nav {
+   grid-area: n;
+   padding: 15px;
+   box-shadow: 0 0 5px rgb(198, 207, 207);
+   height: 100vh;
+}
+
+.item a {
+   color: rgb(59, 174, 250);
+   text-decoration: none;
+   font-size: 160%;
+}
+
+.item a.active {
+   color: black;
+   box-shadow: 0 0 5px;
+}

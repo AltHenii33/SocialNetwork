@@ -1,0 +1,9 @@
+.Post {
+  color: rgb(2, 9, 22);
+}
+
+.Post img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+}
