@@ -3,6 +3,11 @@ export const required = value => {
     return 'Fiel is required'
 }
 
+export const requiredCaptcha = value => {
+    if (value) return undefined;
+    return 'Captcha error'
+}
+
 export const maxLengthCreator = (maxLength) => (value) => {
     if (value && value.length > maxLength) return `Max length is ${maxLength} symbols`;
     return undefined

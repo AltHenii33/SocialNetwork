@@ -16,6 +16,7 @@ import {initializeApp} from './redux/App-reduser'
 import { compose } from 'redux';
 import Preloader from './Components/common/Preloader';
 import NewsContainer from './Components/News/NewsContainer';
+import RightContent from './Components/RightContent/RightContent';
 
 
 class App extends Component {
@@ -43,6 +44,9 @@ class App extends Component {
           <Route path='/Users' render={() => <UsersContainer />} />
           <Route path='/Settings' component={Settings} />
           <Route path='/Login' render={() => <Login />} />
+        </div>
+        <div className ='right-content'>
+          <RightContent />
         </div>
       </div>
     );

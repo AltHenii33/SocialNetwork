@@ -1,11 +1,13 @@
 
 .header {
   grid-area: h;
-  box-shadow: 0 0 5px rgb(198, 207, 207);
+  /* box-shadow: 0 0 5px rgb(198, 207, 207); */
 }
 
 .header img {
-  width: 100px;
+  width: 9vh;
+  height: auto;
+  margin-left: 10vh;
 }
 
 .loginBlock {

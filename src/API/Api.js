@@ -17,6 +17,10 @@ const instance = axios.create({
         });
     },
 
+    getCaptcha () {
+        return instance.get ('/security/get-captcha-url')
+    },
+
     AddDelFriend (followed, id) {
         if (followed) {
             return instance.delete(`follow/${id}`)
@@ -38,8 +42,8 @@ const instance = axios.create({
         });
     },
     
-    login (email, password, rememberMe = false) {
-        return instance.post(`auth/login`, {email, password, rememberMe});
+    login (email, password, rememberMe = false, captcha = null) {
+        return instance.post(`auth/login`, {email, password, rememberMe, captcha});
     },
 
     logout () {

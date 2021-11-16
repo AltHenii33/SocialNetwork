@@ -5,14 +5,7 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-
-
-// export default function SelectedListItem() {
-//    const [selectedIndex, setSelectedIndex] = React.useState(1);
-
-//    const handleListItemClick = (event, index) => {
-//      setSelectedIndex(index);
-//    };
+import { Typography } from '@mui/material';
 
 
 const Navbar = () => {
@@ -25,9 +18,10 @@ const Navbar = () => {
 
    return (
       <nav className={s.nav}>
-      <Box sx={{ width: '100%', maxWidth: 360, bgcolor: '#344955' }}>
+      <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.primary' }}>
+      <Typography variant="h1" component="h2">
          <List component="nav" aria-label="secondary mailbox folder">
-            <NavLink to="/Profile" style={{ color: 'white', textDecoration: 'inherit'}}>
+            <NavLink to="/Profile" style={{ color: 'black', textDecoration: 'inherit'}}>
                <ListItemButton 
                   selected={selectedIndex === 1}
                   onClick={(event) => handleListItemClick(event, 1)}
@@ -35,7 +29,7 @@ const Navbar = () => {
                   <ListItemText primary="Profile" />
                </ListItemButton>
             </NavLink>
-            <NavLink to="/Dialogs" style={{ color: 'white', textDecoration: 'inherit'}}>
+            <NavLink to="/Dialogs" style={{ color: 'black', textDecoration: 'inherit'}}>
             <ListItemButton
                selected={selectedIndex === 2}
                onClick={(event) => handleListItemClick(event, 2)}
@@ -43,7 +37,7 @@ const Navbar = () => {
                <ListItemText primary="Dialogs" />
             </ListItemButton>
             </NavLink>
-            <NavLink to="/News" style={{ color: 'white', textDecoration: 'inherit'}}>
+            <NavLink to="/News" style={{ color: 'black', textDecoration: 'inherit'}}>
             <ListItemButton
                selected={selectedIndex === 3}
                onClick={(event) => handleListItemClick(event, 3)}
@@ -51,7 +45,7 @@ const Navbar = () => {
                <ListItemText primary="News" />
             </ListItemButton>
             </NavLink>
-            <NavLink to="/Music" style={{ color: 'white', textDecoration: 'inherit'}}>
+            <NavLink to="/Music" style={{ color: 'black', textDecoration: 'inherit'}}>
             <ListItemButton
                selected={selectedIndex === 4}
                onClick={(event) => handleListItemClick(event, 4)}
@@ -59,7 +53,7 @@ const Navbar = () => {
                <ListItemText primary="Music" />
             </ListItemButton>
             </NavLink>
-            <NavLink to="/Users" style={{ color: 'white', textDecoration: 'inherit'}}>
+            <NavLink to="/Users" style={{ color: 'black', textDecoration: 'inherit'}}>
             <ListItemButton
                selected={selectedIndex === 5}
                onClick={(event) => handleListItemClick(event, 5)}
@@ -67,7 +61,7 @@ const Navbar = () => {
                <ListItemText primary="Users" />
             </ListItemButton>
             </NavLink>
-            <NavLink to="/Settings" style={{ color: 'white', textDecoration: 'inherit'}}>
+            <NavLink to="/Settings" style={{ color: 'black', textDecoration: 'inherit'}}>
             <ListItemButton
                selected={selectedIndex === 6}
                onClick={(event) => handleListItemClick(event, 6)}
@@ -76,30 +70,11 @@ const Navbar = () => {
             </ListItemButton>
             </NavLink>
          </List>
+         </Typography>;
       </Box>
       </nav>
    );
-
-      return <nav className={s.nav}>
-         <div className={s.item}>
-            <NavLink to="/Profile" activeClassName={s.active}>Profile</NavLink>
-         </div>
-         <div className={s.item}>
-            <NavLink to="/Dialogs" activeClassName={s.active}>Messages</NavLink>
-         </div>
-         <div className={s.item}>
-            <NavLink to="/News" activeClassName={s.active}>News</NavLink>
-         </div>
-         <div className={s.item}>
-            <NavLink to="/Music" activeClassName={s.active}>Music</NavLink>
-         </div>
-         <div className={s.item}>
-            <NavLink to="/Users" activeClassName={s.active}>Users</NavLink>
-         </div>
-         <div className={s.item}>
-            <NavLink to="/Settings" activeClassName={s.active}>Settings</NavLink>
-         </div>
-      </nav>
 }
+
 
 export default Navbar;

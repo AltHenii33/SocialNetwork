@@ -3,16 +3,20 @@
     grid-template-areas: 
     "h h r"
     "n c r";
-    grid-template-rows: 40px 1fr;
+    grid-template-rows: 7vh 93vh;
     grid-template-columns: 2fr 10fr 2fr;
     /* grid-gap: 10px;
     margin: 10px; */
-    background-image: url(https://zastavok.net/main/creative-wallpaper/156676666440.jpg);
     background-size: 100%;
 }
 
 
 .app-wrapper-content {
     grid-area: c;
-    box-shadow: 0 0 5px rgb(180, 190, 190);
+    /* box-shadow: 0 0 5px rgb(180, 190, 190); */
+}
+
+.right-content {
+    grid-area: r;
+
 }

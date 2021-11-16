@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const Header = (props) => {
   return <header className={s.header}>
     <NavLink to="/Profile" >
-      <img src='https://raw.githubusercontent.com/sibur-holding/logo/master/SIBUR_logo_RUS.jpg' />
+      <img src='https://svirtus.cdnvideo.ru/OaCanxrNNlxFU7_zRRo2B8Zn-Ps=/0x0:710x549/800x0/filters:quality(100)/https://hb.bizmrg.com/cybersportru-media/a3/a327f80de5a7721897cf33391519128d.jpg?m=fea45e0a375fe10eb1e53c770c668fe1' />
     </NavLink>
     
 

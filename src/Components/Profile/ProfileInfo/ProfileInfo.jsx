@@ -11,7 +11,7 @@ import SimpleImageSlider from "react-simple-image-slider";
 const ProfileInfo = (props) => {
 
   if (!props.profile) {
-    return <Preloader/>
+    return <Preloader />
   }
 
   const images = [
@@ -24,11 +24,10 @@ const ProfileInfo = (props) => {
   ];
 
   return <div className={s.Profile}>
-    <div className ={s.picture}>
-      {/* <img src='https://klike.net/uploads/posts/2019-06/1561182204_1.jpg' /> */}
+    <div className={s.picture}>
       <SimpleImageSlider
-        width={1100}
-        height={304}
+        width={'100vh'}
+        height={'25vh'}
         images={images}
         showBullets={true}
         showNavs={true}
@@ -37,15 +36,15 @@ const ProfileInfo = (props) => {
       />
     </div>
     <div>
-      <img src={props.profile.photos.large} /> 
+      <img src={props.profile.photos.large} />
     </div>
     <div>
-    {props.profile.fullName}
+      {props.profile.fullName}
     </div>
     <div>
       <ProfileStatusWithHooks
-      status={props.status}
-      updateStatus={props.updateStatus} />
+        status={props.status}
+        updateStatus={props.updateStatus} />
     </div>
   </div>
 }
