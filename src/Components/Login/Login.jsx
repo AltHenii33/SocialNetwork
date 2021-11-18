@@ -1,7 +1,8 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-import { login } from '../../redux/Auth-reduser'
+import { getCaptchaUrl, login } from '../../redux/Auth-reduser'
 import { Redirect } from 'react-router-dom';
 import { required } from '../../utils/Validators/Validator';
 import { requiredCaptcha } from '../../utils/Validators/Validator';
@@ -19,16 +20,16 @@ const LoginForm = (props) => {
             </div>
             <div>
                 <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> remember me
-        </div>
-        <div>
-            {props.captchaUrl && <img src ={props.captchaUrl}/>}
-        </div>
+            </div>
+            {/* <div>
+                {props.captchaUrl && <img src={props.captchaUrl} />}
+            </div> */}
             {props.error && <div className={styles.formSummaryError}>
                 {props.error}
             </div>}
             <div>
                 <div>
-                    <img src={props.captchaUrl}/>
+                    <img src={props.captchaUrl} />
                 </div>
                 <div>
                     <Field placeholder={'captcha'} name={'captcha'} component={Input} validate={requiredCaptcha} />
@@ -44,8 +45,17 @@ const LoginForm = (props) => {
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 
 const Login = (props) => {
+
+    const [capc, setCapc] = useState(null);
+
+    useEffect(() => {
+        // Обновляем заголовок документа с помощью API браузера
+        if (props.captchaUrl === null) props.getCaptchaUrl();
+
+    });
+
     const onSubmit = (formData) => {
-        props.login(formData.login, formData.password, formData.rememberMe)
+        props.login(formData.login, formData.password, formData.rememberMe, formData.captcha)
 
     }
     if (props.isAuth) {
@@ -54,13 +64,13 @@ const Login = (props) => {
 
     return <div>
         <h1> LOGIN</h1>
-        <LoginReduxForm onSubmit={onSubmit}  captchaUrl={props.captchaUrl}/>
+        <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
     </div>
 }
 
 const mapStateToProps = (state) => ({
-    captchaUrl: state.Auth.captchaUrl, 
+    captchaUrl: state.Auth.captchaUrl,
     isAuth: state.Auth.isAuth
 })
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { getCaptchaUrl, login })(Login);

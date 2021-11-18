@@ -26,7 +26,6 @@ const authReduser = (state = initialState, action) => {
     }
 
     case GET_CAPTCHA_URL_SUCCESS: {
-      debugger;
       return {
         ...state,
         ...action.payload
@@ -80,7 +79,6 @@ export const getAuthUserData = () => {
 export const login = (email, password,rememberMe, captcha) => async(dispatch) => {
   let responce = await userAPI.login(email, password,rememberMe, captcha);
   if (responce.data.resultCode === 0) {
-    debugger;
     dispatch(getAuthUserData())
   } else {
     if (responce.data.resultCode === 10) {
@@ -94,6 +92,7 @@ export const login = (email, password,rememberMe, captcha) => async(dispatch) =>
 
 export const getCaptchaUrl = () => async(dispatch) => {
   const responce = await userAPI.getCaptcha();
+  debugger;
   const captchaUrl = responce.data.url;
     dispatch(getCaptchaUrlSuccess(captchaUrl))
 }
