@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useRecaptcha } from "react-hook-recaptcha";
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { getCaptchaUrl, login } from '../../redux/Auth-reduser'
@@ -9,7 +10,11 @@ import { requiredCaptcha } from '../../utils/Validators/Validator';
 import { Input } from '../common/FormsControls/FormsControls';
 import styles from '../common/FormsControls/FormsControls.module.css'
 
+const containerId = "recaptcha";
+const sitekey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+
 const LoginForm = (props) => {
+
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
@@ -21,9 +26,6 @@ const LoginForm = (props) => {
             <div>
                 <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> remember me
             </div>
-            {/* <div>
-                {props.captchaUrl && <img src={props.captchaUrl} />}
-            </div> */}
             {props.error && <div className={styles.formSummaryError}>
                 {props.error}
             </div>}
@@ -35,8 +37,9 @@ const LoginForm = (props) => {
                     <Field placeholder={'captcha'} name={'captcha'} component={Input} validate={requiredCaptcha} />
                 </div>
             </div>
+            <div id={containerId} className="g-recaptcha"  style={{marginTop: "10px"}}/>
             <div>
-                <button> Log In </button>
+                <button disabled={!props.captcha} type="submit"> Log In </button>
             </div>
         </form>
     )
@@ -46,12 +49,22 @@ const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 
 const Login = (props) => {
 
-    const [capc, setCapc] = useState(null);
-
     useEffect(() => {
-        // Обновляем заголовок документа с помощью API браузера
         if (props.captchaUrl === null) props.getCaptchaUrl();
+    });
 
+    const [captchaResponse, setCaptchaResponse] = useState(null);
+    const successCallback = (response) => {
+        setCaptchaResponse(response);
+    };
+    const expiredCallback = () => setCaptchaResponse(null);
+
+    useRecaptcha({
+        containerId,
+        successCallback,
+        expiredCallback,
+        size: "normal",
+        sitekey
     });
 
     const onSubmit = (formData) => {
@@ -64,7 +77,7 @@ const Login = (props) => {
 
     return <div>
         <h1> LOGIN</h1>
-        <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
+        <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} captcha={captchaResponse}/>
     </div>
 }
 
