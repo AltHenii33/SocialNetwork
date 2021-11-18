@@ -92,7 +92,6 @@ export const login = (email, password,rememberMe, captcha) => async(dispatch) =>
 
 export const getCaptchaUrl = () => async(dispatch) => {
   const responce = await userAPI.getCaptcha();
-  debugger;
   const captchaUrl = responce.data.url;
     dispatch(getCaptchaUrlSuccess(captchaUrl))
 }
